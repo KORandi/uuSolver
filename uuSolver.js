@@ -151,13 +151,23 @@ javascript: (async function () {
         }
       );
   }
+  
+  function parseCookie (str){
+    return str
+      .split(';')
+      .map(v => v.split('='))
+      .reduce((acc, v) => {
+        acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[1].trim());
+        return acc;
+      }, {});
+  }
 
   function getCredentials() {
-    const cookie = document.cookie;
-    const csrf = cookie.split("=")[1];
+    const cookie = parseCookie(document.cookie);
+    const csrf = cookie['uu.app.csrf'];
     return {
       "x-csrf-token": csrf,
-      "x-request-id": "d3a5f2b2-d3a5f2b2-9a92797d-0000",
+      "x-request-id": "9c3fb262-9c3fb262-31921ca7-0000",
     };
   }
 
