@@ -8,10 +8,16 @@ javascript: (async function () {
     str = String(str);
     str = str.replaceAll("<uu5string/>", "");
     str = str.replaceAll("\n", " ");
+    str = str.replaceAll("\r", " ");
     str = str.replaceAll('"', "'");
-    str = str.replace(/\$\d/g, "_");
+    str = str.replace(/\$\d/g, "__");
     str = str.replaceAll("<UU5.Bricks.U>", "");
     str = str.replaceAll("</UU5.Bricks.U>", "");
+    str = str.replaceAll("<UU5.Bricks.Strong>", "");
+    str = str.replaceAll("</UU5.Bricks.Strong>", "");
+    str = str.replaceAll("<UU5.Bricks.Em>", "");
+    str = str.replaceAll("</UU5.Bricks.Em>", "");
+    str = str.replaceAll("</br>", " ");
     str = str.trim();
     return str;
   }
